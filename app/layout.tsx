@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { WebSocketProvider } from "@/Context/WebSocket";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import CMDProvider from "@/Context/CMDLogs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ErrorBoundary fallback={<div className="text-center w-full h-screen grid place-items-center text-2xl">Oopsie! You caused the crash dude, not us. Try again 🚀</div>}>
+          <CMDProvider>
+            <WebSocketProvider>
+              {children}
+            </WebSocketProvider>
+          </CMDProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
