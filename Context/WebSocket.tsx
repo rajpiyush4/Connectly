@@ -21,7 +21,7 @@ export const WebSocketProvider = ({ children }: { children: React.ReactNode }) =
     setConnecting("in-progress");
 
     ws.onopen = () => {
-      console.log('✅ WebSocket connecting');
+      console.log('✅ WebSocket connected');
       setConnecting('connected');
     };
     ws.onclose = () => console.log('❌ WebSocket Disconnected');

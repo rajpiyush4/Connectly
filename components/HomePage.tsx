@@ -1,6 +1,6 @@
 // 'use client'
 
-import Instructions from "./Instructions";
+import CLI from "./CLI";
 
 // import { useRouter } from 'next/navigation'
 // import { useState } from 'react'
@@ -28,10 +28,9 @@ export default function HomePage() {
   return (
     <>
     <main>
-
+     <CLI/>
       
     </main>
-    <Instructions />
     </>
   )
 }

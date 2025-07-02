@@ -4,6 +4,7 @@ import "./globals.css";
 import { WebSocketProvider } from "@/Context/WebSocket";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CMDProvider from "@/Context/CMDLogs";
+import Instructions from "@/components/Instructions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
@@ -33,6 +35,7 @@ export default function RootLayout({
         <ErrorBoundary fallback={<div className="text-center w-full h-screen grid place-items-center text-2xl">Oopsie! You caused the crash dude, not us. Try again 🚀</div>}>
           <CMDProvider>
             <WebSocketProvider>
+              <Instructions/>
               {children}
             </WebSocketProvider>
           </CMDProvider>
